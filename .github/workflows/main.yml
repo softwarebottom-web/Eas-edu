@@ -1,20 +1,19 @@
-name: Unzip Bang
+name: Pindahin Folder
 on: workflow_dispatch
 jobs:
-  unzip:
+  move:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Unzip file yg namanya aneh
+      - name: Pindahin isi eas_educstuion-main ke root
         run: |
-          unzip "eas_educstuion-main (2).zip" -d ./
-          rm "eas_educstuion-main (2).zip"
-          
-      - name: Push hasil
+          mv eas_educstuion-main/* ./
+          mv eas_educstuion-main/.* ./ 2>/dev/null || true
+          rm -rf eas_educstuion-main
+      - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add .
-          git commit -m "unzipped anjir" || echo "no changes"
+          git add -A
+          git commit -m "pindah ke root by Kimi 🔥" || echo "no changes"
           git push
