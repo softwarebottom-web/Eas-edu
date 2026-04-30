@@ -1,21 +1,14 @@
-name: Unzip File
+name: Unzip Bang
 on: workflow_dispatch
-
 jobs:
   unzip:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Unzip file
-        run: |
-          unzip eas_educstuion-main (2).zip -d folder_hasil
-          rm eas_educstuion-main (2).zip
-          
-      - name: Commit hasil unzip
-        run: |
-          git config --global user.name 'Bot Kimi'
-          git config --global user.email 'bot@kimi.dev'
+      - run: unzip eas_educstuion-main (2).zip && rm eas_educstuion-main (2).zip
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
           git add .
-          git commit -m "Unzip by Kimi 🔥"
+          git commit -m "unzipped by actions" || echo "no changes"
           git push
