@@ -5,10 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip eas_educstuion-main (2).zip && rm eas_educstuion-main (2).zip
-      - run: |
+      
+      - name: Unzip file yg namanya aneh
+        run: |
+          unzip "eas_educstuion-main (2).zip" -d ./
+          rm "eas_educstuion-main (2).zip"
+          
+      - name: Push hasil
+        run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "unzipped by actions" || echo "no changes"
+          git commit -m "unzipped anjir" || echo "no changes"
           git push
