@@ -1,5 +1,5 @@
 name: Unzip File
-on: workflow_dispatch  # Jalan manual
+on: workflow_dispatch
 
 jobs:
   unzip:
