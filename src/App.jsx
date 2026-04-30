@@ -23,7 +23,7 @@ import { ApplyForm } from "./pages/AdminApply";
 const PURPLE = { bg: "#0a0015" };
 
 const ProtectedRoute = ({ children }) => {
-  nst [user, loading] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const localUser = JSON.parse(localStorage.getItem("eas_user_data") || "null");
   const isVerified = localStorage.getItem("eas_verified") === "true";
   const location = useLocation();
